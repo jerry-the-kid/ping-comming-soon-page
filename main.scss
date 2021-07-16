@@ -1,0 +1,209 @@
+$color-blue: hsl(223, 87%, 63%);
+
+$color-pale-blue: hsl(223, 100%, 88%);
+$color-light-red: hsl(354, 100%, 66%);
+
+$color-gray: hsl(0, 0%, 59%);
+$color-very-dark-blue: hsl(209, 33%, 12%);
+$font: "Libre Franklin", sans-serif;
+$font-weight: (
+  "light": 300,
+  "medium": 600,
+  "bold": 800,
+);
+
+@function weight($type) {
+  @return map-get($font-weight, $type);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  @media only screen and(max-width: 46.875em) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: $font;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: weight(light);
+  color: $color-gray;
+}
+
+.container {
+  padding: 4rem 0 2rem;
+  max-width: 60rem;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.hero {
+  // width: 100%;
+  margin-bottom: 5rem;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.logo {
+  height: 2.25rem;
+  margin-bottom: 3rem;
+}
+
+.header {
+  font-weight: weight(light);
+
+  &-main {
+    font-size: 4.25rem;
+
+    @media only screen and(max-width: 34.375em) {
+      font-size: 3.75rem;
+      margin-bottom: 1rem;
+    }
+
+    & .highlight {
+      color: $color-very-dark-blue;
+      font-weight: weight(bold);
+    }
+  }
+
+  &-sub {
+    font-size: 1.7rem;
+    color: $color-very-dark-blue;
+    margin-bottom: 2.5rem;
+
+    @media only screen and(max-width: 34.375em) {
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+form {
+  max-width: 55rem;
+  display: flex;
+  position: relative;
+  margin: 0 auto 7rem auto;
+  justify-content: center;
+
+  @media only screen and(max-width: 34.375em) {
+    flex-direction: column;
+    max-width: 40rem;
+  }
+}
+
+.notification {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 14px;
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: $color-light-red;
+
+  @media only screen and(max-width: 34.375em) {
+    position: unset;
+    font-size: 1.5rem;
+  }
+}
+
+input {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+
+  @media only screen and(max-width: 34.375em) {
+    padding: 1.75rem 3rem;
+  }
+}
+
+input[type="email"] {
+  width: 65%;
+  margin-right: 1.5rem;
+  border: 1px solid $color-gray;
+  color: $color-very-dark-blue;
+
+  &:invalid ~ .notification {
+    display: block;
+  }
+
+  &:valid ~ .notification {
+    display: none;
+  }
+
+  &:focus {
+    border: 1px solid $color-blue;
+  }
+
+  &:invalid {
+    border: 1px solid $color-light-red;
+  }
+
+  @media only screen and(max-width: 34.375em) {
+    width: 100%;
+  }
+}
+
+input[type="submit"] {
+  width: calc(35% - 1.5rem);
+  background-color: $color-blue;
+  color: #ffffff;
+  font-weight: weight(medium);
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.5rem $color-pale-blue;
+
+  &:active {
+    box-shadow: 0 0.2rem 1rem $color-pale-blue;
+    transform: translateY(1px) scale(0.99);
+  }
+
+  @media only screen and(max-width: 34.375em) {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+.apps {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+
+  & a {
+    text-decoration: none;
+    color: $color-blue;
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    line-height: 2;
+    border-radius: 50%;
+    background-color: white;
+  }
+
+  & a:hover {
+    background-color: $color-blue;
+    color: white;
+  }
+
+  & a:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+.copy-right {
+  font-size: 1.3rem;
+}
